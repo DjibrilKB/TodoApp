@@ -28,7 +28,9 @@ export default function TodoDone() {
               }}
             >
               {todo.text}
-              <button onClick={() => handleToggleTodo(todo.id)}>Terminé</button>
+              <button onClick={() => handleToggleTodo(todo.id)}>
+                <span></span>Terminé
+              </button>
               <button onClick={() => handleRemoveTodo(todo.id)}>
                 Supprimer
               </button>
