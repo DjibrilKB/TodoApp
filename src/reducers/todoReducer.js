@@ -12,6 +12,12 @@ const todoReducer = (state = initialState, action) => {
           ? { ...todo, completed: !todo.completed }
           : todo
       );
+    case "EDIT_TODO":
+      return state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo
+      );
     default:
       return state;
   }
