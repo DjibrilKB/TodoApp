@@ -32,7 +32,6 @@ Bienvenue dans ce projet de **Todo List App** conçu pour démontrer mes compét
 - **React** : Pour la construction de l'interface utilisateur.
 - **Redux** : Pour la gestion centralisée de l'état de l'application.
 - **Tailwind CSS** : Pour le design et la mise en page.
-- **Vite** : Pour un environnement de développement rapide et performant.
 
 ---
 
@@ -59,7 +58,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 3. Lancez le projet en mode développement :
    ```bash
-   npm run dev
+   npm run dev ou npm start
    ```
 
 4. Ouvrez votre navigateur à l'adresse suivante :
@@ -123,7 +122,7 @@ const todoReducer = (state = [], action) => {
 - Intégration avec une base de données (ex. : Firebase, Supabase).
 - Ajout de tests unitaires avec **Jest**.
 - Ajout d'un système d'authentification pour gérer les utilisateurs.
-
+- Utilisation de Vite Js pour un environnement de développement rapide et performant.
 ---
 
 ## Auteur
