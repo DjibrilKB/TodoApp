@@ -128,7 +128,7 @@ const todoReducer = (state = [], action) => {
 ## Auteur
 
 Créé par **Djibril SAMASSA**  
-[Votre Portfolio](https://votre-portfolio.com) | [LinkedIn](https://linkedin.com/in/votreprofil) | [GitHub](https://github.com/votreprofil](https://github.com/DjibrilKB)
+[Votre Portfolio](https://votre-portfolio.com) | [LinkedIn](https://linkedin.com/in/votreprofil) | [Github](https://github.com/votreprofil](https://github.com/DjibrilKB) 
 
 ---
 
