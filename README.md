@@ -1,70 +1,137 @@
-# Todo App 
+# Todo List App avec React, Redux et Tailwind CSS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bienvenue dans ce projet de **Todo List App** conçu pour démontrer mes compétences en développement frontend avec **React**, **Redux**, et **Tailwind CSS**. Ce projet met en avant la gestion d'état avec Redux, l'utilisation de composants réactifs et un design simple mais efficace grâce à Tailwind CSS.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Fonctionnalités
 
-### `npm start`
+### Fonctionnalités de base :
+- **Ajouter une tâche** : Ajoutez une tâche avec un texte descriptif.
+- **Marquer comme terminée** : Indiquez qu'une tâche est terminée.
+- **Supprimer une tâche** : Supprimez une tâche de la liste.
+- **Modifier une tâche** : Mettez à jour le texte d'une tâche existante.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Gestion de l'état :
+- L'état des tâches est géré globalement avec **Redux**.
+- Les actions suivantes sont prises en charge : 
+  - `ADD_TODO`
+  - `REMOVE_TODO`
+  - `TOGGLE_TODO`
+  - `EDIT_TODO`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Interface utilisateur :
+- **Responsive** et design propre grâce à **Tailwind CSS**.
+- Boutons interactifs avec des effets visuels au survol (hover).
+- **Modale** pour la modification des tâches.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies utilisées
 
-### `npm run build`
+- **React** : Pour la construction de l'interface utilisateur.
+- **Redux** : Pour la gestion centralisée de l'état de l'application.
+- **Tailwind CSS** : Pour le design et la mise en page.
+- **Vite** : Pour un environnement de développement rapide et performant.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Prérequis
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
+- **Node.js** (version 14 ou supérieure)
+- **npm** ou **yarn**
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation et lancement
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clonez le projet :
+   ```bash
+   git clone https://github.com/votre-repo/todo-list-app.git
+   cd todo-list-app
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Lancez le projet en mode développement :
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+4. Ouvrez votre navigateur à l'adresse suivante :
+   ```
+   http://localhost:3000
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Aperçu du code
 
-### Code Splitting
+### Exemple de reducer :
+```javascript
+const todoReducer = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_TODO":
+      return [...state, action.payload];
+    case "REMOVE_TODO":
+      return state.filter((todo) => todo.id !== action.payload.id);
+    case "TOGGLE_TODO":
+      return state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      );
+    case "EDIT_TODO":
+      return state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo
+      );
+    default:
+      return state;
+  }
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Exemple d'interface utilisateur :
+```jsx
+<button
+  className="bg-green-400 hover:bg-green-500 text-white p-2 rounded"
+  onClick={() => handleToggleTodo(todo.id)}
+>
+  Terminé
+</button>
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Points forts du projet
 
-### Making a Progressive Web App
+- **Architecture claire** : Le projet est organisé pour être extensible et facile à maintenir.
+- **Gestion d'état robuste** : Utilisation des actions et reducers Redux pour des opérations prévisibles.
+- **Design moderne** : Utilisation de Tailwind CSS pour une interface soignée et responsive.
+- **Prêt pour des améliorations** : Le projet peut être facilement étendu avec des fonctionnalités comme la persistance des données via une API ou un backend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Améliorations possibles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Intégration avec une base de données (ex. : Firebase, Supabase).
+- Ajout de tests unitaires avec **Jest**.
+- Ajout d'un système d'authentification pour gérer les utilisateurs.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Auteur
 
-### `npm run build` fails to minify
+Créé par **Djibril SAMASSA**  
+[Votre Portfolio](https://votre-portfolio.com) | [LinkedIn](https://linkedin.com/in/votreprofil) | [GitHub](https://github.com/votreprofil](https://github.com/DjibrilKB)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+Merci de votre intérêt pour ce projet ! 🎉  
+N'hésitez pas à me contacter pour toute question ou opportunité. 😊
